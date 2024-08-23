@@ -1,3 +1,11 @@
+/*
+
+This is a first implementation of the Arduino PID control strategy.  It uses interruptions and has torubles with cast of variables in the interruption call function (ISR). Also 
+It couldn't work because the operations in the ISR can require more 
+time to be processed than the time used by the timer. Maybe it can works, idk.
+
+*/
+
 /*Arduino PID implementation
 by Juan josé Meza Gutiérrez
 */
