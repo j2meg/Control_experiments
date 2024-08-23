@@ -66,7 +66,7 @@ void setup() {
     Wire.begin();
 }
 
-// Te void loop is a function that changes the setpoint to 3 and 2 volts (an step) 
+// Te void loop is a function that changes the setpoint to 3 and 2 volts (a step) 
 void loop() {
 
 SetPoint= 1638; // 2 volts   
