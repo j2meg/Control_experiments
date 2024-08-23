@@ -47,7 +47,8 @@ ISR(TIMER1_COMPA_vect)
   // Esfuerzo de control 
 
   // Error F y ek0 deberian ser de punto flotante 
-  F=  uk1 + (kp+ki*h+kd/h)*ek0 + (-2*kd/h-kp)*ek1 + (kd/h)*ek2;
+  //F=  uk1 + (kp+ki*h+kd/h)*ek0 + (-2*kd/h-kp)*ek1 + (kd/h)*ek2;
+  F=kp*ek0; // Control Proporcional
   uk1 = F;
   ek2 = ek1;
   ek1 = ek0;
