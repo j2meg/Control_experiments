@@ -89,30 +89,16 @@ volatile float Uk1=0; // Esfuerzo de control t anterior
 volatile float Uk2=0; // Esfuerzo de control 2 t anterior
 
 
-/*
-float Kp=7; 
-float Ki=0;
-float Kd=0;
-*/
-
-//P
-float Kp=     1.2785;  
-float Ki=      -1.1176;
-float Kd=    0.1164;
+//QR23
+float Kp=1.2785, Ki=-1.1176, Kd=0.1164;
 
 
-//PI
-/*
-float Kp=Ku*0.45;  
-float Ki=Kp/(Pu/1.2); // Ki=Kp/Ti -- Ti=Pu/1.2
-float Kd=0;
-*/
-//PID
-/*
-float Kp=0.6*Ku; // 
-float Ki=Kp/(0.5*Pu); //Ki=Kp/Ti -- Ti=0.5*Pu
-float Kd=Kp*Pu/8; // Kd=Kp*Td -- Td=Pu/8
-*/
+//QR2
+//float Kp= 1.2889, Ki=-1.1033,Kd=0.1046;
+
+//QR
+//float Kp= 9.9999, Ki=-7.7378,Kd=1.0983;
+
 
 
 //
@@ -132,8 +118,8 @@ void IRAM_ATTR TimerHandler()
   //Uk= Uk1+(kp+ki*h+kd/h)*ek+(-2*kd/h-kp)*ek1+(kd/h)*ek2; 
   //Uk= Uk1+Kp*ek + ki*h*ek + kd/h*ek+(-2*kd/h-kp)*ek1+(kd/h)*ek2; 
   
-  Uk= Uk1+(Kp+Ki*h+Kd/h)*ek+(-2*Kd/h-Kp)*ek1+(Kd/h)*ek2; 
-  //Uk= Uk1+Kp*ek+Ki*ek1+Kd*ek2; 
+  //Uk= Uk1+(Kp+Ki*h+Kd/h)*ek+((-2*Kd/h)-Kp)*ek1+(Kd/h)*ek2; // buena
+  Uk= Uk1+Kp*ek+Ki*ek1+Kd*ek2; 
   
   Uk1=Uk;
   ek2=ek1;
@@ -194,12 +180,12 @@ void setup()
 void loop()
 {
 SetPoint =0;   // 0 volts
-delay(35);
+delay(50);
 /*SetPoint = 256;
 delay(500);
 */
 SetPoint = 1; // 1.5 volts
-delay(35);
+delay(50);
 
 //SetPoint = 2;// 3.3 volts
 //delay(25);
