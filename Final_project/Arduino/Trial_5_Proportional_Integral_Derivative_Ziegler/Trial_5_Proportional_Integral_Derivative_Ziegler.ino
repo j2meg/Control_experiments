@@ -89,12 +89,12 @@ volatile float Uk1=0; // Esfuerzo de control t anterior
 volatile float Uk2=0; // Esfuerzo de control 2 t anterior
 
 // Ganancias de control
-float Ku= 6.5;
+float Ku= 6;//3;
 float Pu= 0.0035; //3.5ms
 //Uncomment just one control scheme
 //Osscilations
 /*
-float Kp=7; 
+float Kp=3; 
 float Ki=0;
 float Kd=0;
 */
@@ -132,12 +132,8 @@ void IRAM_ATTR TimerHandler()
   
   ek = SetPoint-fInput; // Error
   
-  //Uk= Uk1+Kp*ek+Ki*(ek-ek1); // Esfuerzo de control Integral
-  //Uk= Uk1+(kp+ki*h+kd/h)*ek+(-2*kd/h-kp)*ek1+(kd/h)*ek2; 
-  //Uk= Uk1+Kp*ek + ki*h*ek + kd/h*ek+(-2*kd/h-kp)*ek1+(kd/h)*ek2; 
-  
   Uk= Uk1+(Kp+Ki*h+Kd/h)*ek+(-2*Kd/h-Kp)*ek1+(Kd/h)*ek2; 
-  
+  //Uk= Uk1+Kp*ek+Ki*ek1+Kd*ek2; 
   Uk1=Uk;
   ek2=ek1;
   ek1=ek;
