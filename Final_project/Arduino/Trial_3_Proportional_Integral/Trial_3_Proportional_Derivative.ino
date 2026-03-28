@@ -1,11 +1,11 @@
 /*
-This program uses an NodeMCU v1.0 Implement a digital PI control system.
+This program uses an NodeMCU v1.0 Implement a digital PD control system.
 The update of the input and output is driven by an arbitrary sample time defined by a hardware timer. 
 
 Materials list. 
 NodeMCU V1.0
 MCP4725 (12 bits I2C DAC)
-The plant attached to this PI control system is a two stage Low Pass Filter
+The plant attached to this PD control system is a two stage Low Pass Filter
 made with two 15kOhms resistors and 2 100nF capacitors.  
 
 
